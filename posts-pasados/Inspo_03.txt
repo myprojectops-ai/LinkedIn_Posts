@@ -1,0 +1,39 @@
+Claude tiene dos funciones que casi nadie combina, todos las usan por separado. Pero si las juntas es muchísimoooo mejor el resultado!
+
+Cuál es la diferencia entre los Projects y los Skills en Claude? Y cuándo usar cuál?
+
+Llevo meses volviéndome mejor usando Skills intentando una que otra cosita... 
+
+Y se me había olvidado por completo los Projects que son las carpeticas donde uno le da instrucciones, le sube los archivos y ese chat tiene todo el contexto. (Chatgpt tiene las mismas carpetas)
+
+Pero bueno no es que no sirvan par anda sino que cuándo debo usar el uno el otro
+
+1. Los Projects son el QUÉ
+
+Son las carpeticas donde uno le da instrucciones, le sube los archivos y ese chat tiene todo el contexto.
+
+Uno le agrega los datos del mes, las instrucciones del cliente, el tono que usa, pero no le enseñan a Claude ninguna habilidad
+
+2. Los Skills son el CÓMO
+
+Un Skill es un manual de instrucciones detallado que le enseña a Claude cómo ejecutar un tipo de tarea al nivel que uno lo haría
+
+Por ejemplo yo tengo un Skill de reportes que sabe cómo estructurar la presentación , qué métricas quiero mostrar, cómo escribir exactamente lo que quiero
+
+Entonces cuándo usar cada uno?
+
+Un Project es bueno usarlo cuando uno tiene trabajo recurrente sobre un tema específico y no quiere rexplicar el contexto cada vez.
+
+-Voy a a hablar del mismo cliente y haré el mismo reporte enfocado en CAC y MRR, con el tono conservador...
+
+El Skill encambio cuando quiero que Claude produzca un tipo de output específico a un nivel con bastante detalle, sin importar el tema. Le puedo meter la info de cualquier cliente y lo hará igual
+
+Crea una propuesta comercial con portada, problema, solución, inversión y próximos pasos 
+
+Bien entonces cuándo aguanta usarlos juntos?
+
+Cuando uno quiere un output personalizado y de alta calidad al mismo tiempo.
+
+El Project pone el contexto (números de marzo) el Skill pone la expertise (así se estructura un reporte mensual)
+
+El resultado es un reporte que se ve impecable y se ve exactamente como lo haría uno solo que en minutos. Si quieren que les ayude estructurando algún skill escribanme

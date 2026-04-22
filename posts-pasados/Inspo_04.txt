@@ -1,0 +1,30 @@
+Construí con Claude Skills un agente que me ayuda a volverme una maquina de ejecución. Es el “planeador del día para ejecución”
+
+Armé una guía que te dice paso a paso cómo hacerlo, en menos de 20 minutos ya lo tienes listo en Claude.
+
+Todas las mañanas lee mi calendario y me da un resumen exacto de cómo va a ser mi día.
+
+Luego, como tiene acceso a mi lista de pendientes (To-Dos) en Notion. Sabe todo los que tengo pendiente por cliente, el orden de prioridad y cuál es la fecha de entrega de cada cosa.
+
+Y como sabe cuánto me demoro en cada tarea el va y acomoda en mi calendario los mejores momentos del día para hacer esa tarea.
+
+YO soñabaaaa con tener algo así, uno lo ve en las series como “Suits” que Harvey Specter tiene a Donna que le ayuda con su calendario. Bueno pues cree su remplazo
+
+Estoy seguro que muchos se gastan un montón planeando la semana si es que lo hacen.
+
+Y no es fácil meter todo en el calendario para forzarse a ejecutar y poder ser mucho más productivo.
+
+Mis tareas estaban en un Notion pero sin un momento asignado en el día = no pasaban.
+
+Terminaba el día sin haber avanzado mucho, porque nunca les asigné un momento en el día para hacerlo
+
+Lo que hace:
+- Lee mi calendario completo del día
+- Revisa mis To-Dos en Notion por cliente, prioridad y fecha de entrega
+- Sabe cuánto me demoro en cada tarea
+- Acomoda los bloques en mi calendario para que yo solo ejecute
+- El agente planea y ya solo me queda ejecutar.
+
+Comenten "Calendario" y les mando esta guía que te dice paso a paso cómo hacerlo. 
+
+(PORFAVOR Agrégame como amigo para que LinkedIn me deje enviártela)

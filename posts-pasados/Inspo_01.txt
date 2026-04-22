@@ -1,0 +1,24 @@
+Que hacer cuando un agente hace algo que uno le dice NO HACER!
+
+El 95% de las veces uno lo logra refinando el prompt, pero que hacer con el otro 5%
+
+Me pasó con un agente esta semana, el prompt decía clarito que NUNCA escribiera en archivos de configuración
+
+Era bien específico, me funcionó durante meses.
+
+Hasta que un día Claude no sé cómo, logró saltarse la instrucción porque el contexto lo hacía parecer justificado.
+
+Por eso, es clave entender que una instrucción bien escrita no es lo mismo que una barrera física.
+
+Hay dos formas de controlar un agente: Prompt-based guidance: cuando uno le dice a Claude qué hacer en el prompt.
+
+Funciona casi siempre. Pero Claude razona sobre el contexto, y un caso raro, un argumento que lo convence o una situación inusual puede hacer que se desvíe y haga lo que se le dé la gana
+
+En cambio , Programmatic hooks: código que se ejecuta antes de que el tool corra. Si devuelve “deny”, la acción no pasa.
+
+Ahí logramos mecánicamente bloquearlo
+Ni –dangerously-skip-permissions lo salta.
+
+Entonces si estamos haciendo algo que cuesta plata, compliance o datos, vale la pena usar hook.
+
+Si es algo que no pasa nada, más fácil usar prompt

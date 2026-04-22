@@ -1,0 +1,24 @@
+Este pequeño truco con Claude me ha ahorrado tanto tiempo. Para todo el que sigue llenando documentos manualitos, este es para ti!
+
+Todas las semanas me toca llenar uno documentos de la empresa y me da taaaanta pereza y se que al equipo también 
+
+Y fijo fijo terminan acumulandose entonces da el doble de pereza
+
+Pero bueno amigo claude, ayudame a ver
+
+Entonces en 5 pasos cómo llenamos contratos o documentos en minutos:
+
+1. Vas a abrir la plantilla base o el contrato que usas siempre.
+
+2. Subes esa plantilla a Claude y le dices qué variables quieres llenar. Él te arma todo el sistema. 
+Ejemplo: Porfavor pon todos estos campos como variables dentro del documento
+
+3. Se van a reemplazar los datos que cambian por variables entre llaves: {nombre_cliente}, {fecha}, {valor_contrato}.
+
+4. Cuando necesites un nuevo documento, solo le vas a subir el documento y escribir los datos en el chat.
+
+5. Te entrega el documento completo, listo para firmar.
+
+Ya nada de copy y paste, y tener que llenar los puntos 1 a 1 con posibilidades de cometer un error.
+
+Te acabas de ahorrar mínimo 10 minutos por documento y lo mejor es que uno se siente pro
