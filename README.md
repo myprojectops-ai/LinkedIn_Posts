@@ -18,10 +18,12 @@ Ideas fuente en DB "Posts"         → Quedan con Usada = true (no se repiten)
 
 | Archivo / carpeta | Qué es |
 |---|---|
+| `CLAUDE.md` | Contexto y principios no-negociables del proyecto. Lo lee el agente primero. |
+| `agent-prompt.md` | Flujo diario del agente (pasos operativos) |
 | `.claude/skills/lp-linkedin-writer/` | Skill con la voz de LP: `SKILL.md` + 3 referencias (TONO_VOZ, AVATAR, Post_LinkedIn_Referencia) |
-| `agent-prompt.md` | Instrucciones del flujo diario (fuente humana-legible) |
-| `trigger-prompt.md` | Prompt consolidado que corre el agente remoto (se regenera desde los 4 archivos del skill + `agent-prompt.md`) |
-| `posts-pasados/` | Tira aquí `.md` o `.txt` con posts pasados para afinar la voz. Cuando añadas archivos, regenera `trigger-prompt.md` (ver abajo) |
+| `posts-pasados/` | Inspo `.txt`/`.md` de LP para afinar la voz. **Prioridad alta** sobre las otras referencias. |
+| `trigger-prompt.md` | Prompt consolidado desplegado en el trigger remoto (generado — NO editar a mano) |
+| `regenerate-trigger.py` | Regenera `trigger-prompt.md` a partir de CLAUDE.md + agent-prompt.md + skill + posts-pasados |
 
 ## Trigger remoto
 
@@ -38,69 +40,23 @@ Ideas fuente en DB "Posts"         → Quedan con Usada = true (no se repiten)
 | DB "Posts" (fuente, Ideas con newsletters) | https://www.notion.so/7967dcc8dcfd4db1b527e59ade4aaa0c |
 | DB "LinkedIn posts" (destino, drafts generados) | https://www.notion.so/5e2ea9281266400194177e6f6a5e0b81 |
 
-## Cómo alimentar el agente (añadir posts pasados)
+## Cómo alimentar el agente (añadir posts pasados o cambiar algo)
 
-1. Tira archivos `.md` o `.txt` en `posts-pasados/`. Uno por post, o varios posts en un mismo archivo separados por `---`.
+1. Haz el cambio que quieras:
+   - Tirar un `.md` o `.txt` en `posts-pasados/` para afinar la voz
+   - Editar `CLAUDE.md` para cambiar principios / contexto
+   - Editar `agent-prompt.md` para cambiar el flujo
+   - Editar los archivos del skill (`.claude/skills/lp-linkedin-writer/`)
+
 2. Regenera `trigger-prompt.md`:
 
 ```bash
-python -c "
-from pathlib import Path
-base = Path('.')
-skill = base / '.claude/skills/lp-linkedin-writer'
-pasados = base / 'posts-pasados'
-
-agent_prompt = (base / 'agent-prompt.md').read_text(encoding='utf-8')
-skill_md = (skill / 'SKILL.md').read_text(encoding='utf-8')
-avatar = (skill / 'references/AVATAR.md').read_text(encoding='utf-8')
-tono = (skill / 'references/TONO_VOZ.md').read_text(encoding='utf-8')
-posts_ref = (skill / 'references/Post_LinkedIn_Referencia.md').read_text(encoding='utf-8')
-
-extras = []
-for f in sorted(pasados.iterdir()):
-    if f.is_file() and f.suffix.lower() in ('.md', '.txt'):
-        extras.append(f'### {f.stem}\n\n{f.read_text(encoding=\"utf-8\").strip()}')
-
-extras_block = ''
-if extras:
-    extras_block = '\n\n---\n\n## REFERENCIA EXTRA — Posts pasados propios (subidos por el usuario)\n\n' + '\n\n'.join(extras)
-
-consolidated = f'''{agent_prompt}
-
----
-
-# APÉNDICE: Skill lp-linkedin-writer (embebido)
-
-## SKILL.md
-
-{skill_md}
-
----
-
-## Referencia 1/3 — TONO_VOZ.md
-
-{tono}
-
----
-
-## Referencia 2/3 — AVATAR.md
-
-{avatar}
-
----
-
-## Referencia 3/3 — Post_LinkedIn_Referencia.md
-
-{posts_ref}
-{extras_block}
-'''
-
-(base / 'trigger-prompt.md').write_text(consolidated, encoding='utf-8')
-print(f'Wrote trigger-prompt.md ({len(consolidated):,} chars)')
-"
+python regenerate-trigger.py
 ```
 
-3. Actualiza el trigger remoto con el nuevo prompt. Opción 1 (UI): https://claude.ai/code/scheduled/trig_01MWV3k2PP4MZxr6Pebf4LPg — editar el prompt manualmente. Opción 2 (API): pasarle el contenido de `trigger-prompt.md` al `events[0].data.message.content` del trigger via `POST /v1/code/triggers/{id}`.
+3. Actualiza el trigger remoto con el nuevo prompt. Opción 1 (UI): https://claude.ai/code/scheduled/trig_01MWV3k2PP4MZxr6Pebf4LPg — editar el prompt manualmente copiando el contenido de `trigger-prompt.md`. Opción 2 (API): `POST /v1/code/triggers/{id}` con el contenido de `trigger-prompt.md` en `events[0].data.message.content`.
+
+4. Commit y push los cambios al repo para mantener el historial.
 
 ## DB "LinkedIn posts" — schema
 
