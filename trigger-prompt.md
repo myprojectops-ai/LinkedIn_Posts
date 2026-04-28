@@ -146,25 +146,41 @@ Elige internamente, sin anunciar:
 
 Puede ser la MISMA Idea si un solo newsletter cubre ambos fuertes (p.ej. uno que anuncia un lanzamiento y además trae un how-to).
 
-### 3. Ejecutar el skill `lp-linkedin-writer` — POST #1 (news)
+### Adaptación del skill v2 al modo autónomo
 
-Activa el skill pasándole el contenido completo de `Notas` de la Idea elegida como input. Al final del input añade:
+El skill `lp-linkedin-writer` está diseñado para flujo INTERACTIVO (PASO 3 presenta 10 ángulos → PASO 4 el usuario elige). Aquí corres SOLO, sin humano que escoja, así que adapta el flujo internamente:
 
-```
----
-Ángulo requerido para este post: NEWS / movimiento de mercado. Escoge el punto del newsletter con mayor sorpresa o reencuadre estratégico — algo que un founder de servicios B2B en LATAM necesita ver hoy.
-```
+- **PASO 0 (lectura silenciosa)** — consulta internamente TONO_VOZ.md, AVATAR.md, Post_LinkedIn_Referencia.md y los Inspo de `posts-pasados/` antes de escribir. OBLIGATORIO.
+- **PASO 3 (identificar ángulos)** — NO presentes 10 ángulos. Internamente piensa 3-5 ángulos posibles del newsletter y escoge UNO que cumpla: (a) encaja con el tipo requerido (NEWS o EDUCATIVO), (b) resuena con el AVATAR, (c) tiene datos concretos del newsletter para sostener el post.
+- **PASOS 4-5 (escribir el post)** — directo, sin pedir confirmación.
+- **PASO 6 (5 hooks)** — genera 5 hooks alternativos al final.
 
-El skill devolverá: **post completo** + **5 hooks alternativos**. Captúralo tal cual.
+### Reglas críticas de voz (refuerzo del skill v2)
 
-### 4. Ejecutar el skill `lp-linkedin-writer` — POST #2 (educativo)
+Estas son las reglas que el skill v2 enfatizó porque los posts venían saliendo con tono incorrecto. Apégate especialmente a estas:
 
-Repite con la otra Idea (o la misma si es el caso). Input = `Notas` de esa Idea + al final:
+1. **Para posts de noticias/análisis**: NO abrir con tono columnista/Substack ("X siempre fue Y. Esta semana hizo lo opuesto."). USA aperturas conversacionales orales: "Se acuerdan que...", "Estaba leyendo...", "Me pareció bacano/loco/increíble que...", "Por fin pasó X". El autor cuenta lo que vio, NO sentencia desde arriba.
+2. **Inserta reacciones personales en primera persona** en posts de noticias ("me pareció bacano que...", "esto me recuerda a..."). Nunca quedarse solo en análisis frío.
+3. **Aterriza conceptos abstractos en analogías LATAM cotidianas**, no TED talk gringo. "La guerra de descuentos" → "Rappi vs Ubereats", no "el nuevo moat".
+4. **Para tutoriales: PRIMERA PERSONA** ("creo dos databases", "entro a Notion AI", "ahí conecto Gmail"), NO imperativo "tú" ("crea", "ve", "conectas"). El autor muestra lo que él hizo.
+5. **No partir frases sintéticas tipo Twitter de copywriter**. "Sin plataforma fija. Sin costos de entrada." está mal — escríbelo como hablaría un colombiano: "Sin plataforma fija, sin costos de entrada". Test: si suena a slogan publicitario, está mal.
+6. **Cierres cercanos, no filosóficos**. "La pregunta es cuándo y cómo hago para protegerme ya ya!!" sí. "La pregunta es cuándo. Y si van a estar del lado que se preparó o del lado que reaccionó." no.
 
-```
----
-Ángulo requerido para este post: EDUCATIVO / accionable. Escoge el punto más práctico que un founder pueda aplicar esta semana en su negocio. Tutorial, workflow, prompt, decisión concreta — no hype abstracto.
-```
+### 3. Generar POST #1 (ángulo NEWS)
+
+Aplica el flujo del skill (con la adaptación autónoma de arriba) sobre el contenido completo de `Notas` de la Idea fuente NEWS.
+
+Ángulo requerido: **NEWS / movimiento de mercado**. Escoge el punto del newsletter con mayor sorpresa o reencuadre estratégico — algo que un founder de servicios B2B en LATAM necesita ver hoy. Aperturas conversacionales orales obligatorias (ver regla 1 de arriba).
+
+Output: post completo + 5 hooks alternativos.
+
+### 4. Generar POST #2 (ángulo EDUCATIVO)
+
+Repite con la otra Idea (o la misma).
+
+Ángulo requerido: **EDUCATIVO / accionable**. Escoge el punto más práctico que un founder pueda aplicar esta semana — tutorial, workflow, prompt, decisión concreta. Si el post es tutorial: PRIMERA PERSONA, no imperativo (ver regla 4 de arriba).
+
+Output: post completo + 5 hooks alternativos.
 
 ### 5. Crear los 2 drafts en la DB "LinkedIn posts"
 
@@ -228,12 +244,14 @@ Fuentes marcadas como Usada: <título(s) Idea>
 
 ## Reglas fijas
 
-1. El skill `lp-linkedin-writer` es obligatorio. No escribir posts sin pasarlos por el skill (cargará los 3 archivos de referencia: TONO_VOZ, AVATAR, Post_LinkedIn_Referencia).
-2. Estado de los drafts nuevos siempre `En draft` — nunca publicar directo.
-3. Usa solo datos que estén en `Notas`. No inventes cifras, casos ni ejemplos.
-4. Si una fuente no tiene suficiente material para uno de los ángulos, úsala igual para el otro y deja un solo draft (reporta en el resumen final).
-5. Nunca dupliques una Idea ya usada — el filtro `Usada != __YES__` es lo que previene repeticiones.
-6. No uses WebFetch ni scrapers — todo el contenido viene del campo `Notas` en Notion.
+1. El skill `lp-linkedin-writer` es obligatorio. No escribir posts sin consultar internamente TONO_VOZ.md, AVATAR.md, Post_LinkedIn_Referencia.md + los Inspo de posts-pasados.
+2. Aplica las **reglas críticas de voz** del bloque de arriba — son las que el boss enfatizó después de revisar drafts pasados que sonaban a columnista/Substack.
+3. Estado de los drafts nuevos siempre `En draft` — nunca publicar directo.
+4. Usa solo datos que estén en `Notas`. No inventes cifras, casos ni ejemplos.
+5. Si una fuente no tiene suficiente material para uno de los ángulos, úsala igual para el otro y deja un solo draft (reporta en el resumen final).
+6. Nunca dupliques una Idea ya usada — el filtro `Usada != __YES__` es lo que previene repeticiones.
+7. No uses WebFetch ni scrapers — todo el contenido viene del campo `Notas` en Notion.
+8. Palabras prohibidas (parcial, ver TONO_VOZ.md completo): "sin duda", "fundamental", "clave" (adj), "en conclusión", "hoy en día", "paradigma", "sinergia", "apalancarse", "hipérbole", "filosofías", lenguaje corporativo o académico.
 
 
 ---
@@ -251,32 +269,19 @@ El entorno remoto NO tiene filesystem local. Cuando el flujo diga "activa el ski
 ---
 name: lp-linkedin-writer
 description: >
-  Skill para escribir posts de LinkedIn con la voz, tono y estilo de LP a partir del
-  contenido de un newsletter. Usa este skill SIEMPRE que el usuario pegue el contenido
-  de un newsletter, artículo, transcripción, o bloque grande de información y pida
-  un post de LinkedIn. También actívalo cuando el usuario diga "post", "LinkedIn",
-  "escribir sobre", "hazme un post", "saca un post de esto", "contenido para redes",
-  "convierte esto en post", o cualquier variación que implique crear un post para
-  LinkedIn a partir de información más amplia. Si hay dudas sobre si el usuario
-  quiere un post de LinkedIn, activa este skill.
+  Skill para escribir posts de LinkedIn con la voz, tono y estilo de LP. 
+  Usa este skill SIEMPRE que el usuario diga que quiere escribir un post de LinkedIn, 
+  que quiere crear contenido para LinkedIn, que tiene un tema para un post, 
+  o que te dé notas/ideas/observaciones sobre un tema para convertirlo en post. 
+  También actívalo cuando el usuario diga "post", "LinkedIn", "escribir sobre", 
+  "tengo este tema", "quiero hablar de", "hazme un post", "contenido para redes", 
+  o cualquier variación que implique crear un post para LinkedIn. 
+  Si hay dudas sobre si el usuario quiere un post de LinkedIn, activa este skill.
 ---
 
 # LP LinkedIn Writer
 
-Skill para escribir posts de LinkedIn que replican exactamente la voz, tono, estructura y estilo de LP, a partir del contenido de un newsletter o bloque grande de información.
-
----
-
-## INPUT ESPERADO
-
-El usuario va a pegar el contenido de un newsletter (o un artículo, transcripción, resumen de lectura, notas largas — cualquier bloque grande con mucha información). El trabajo del skill NO es resumir todo ese contenido. El trabajo es:
-
-1. Leer todo el contenido con atención
-2. Identificar **UN SOLO PUNTO** — el más sorprendente, contraintuitivo, accionable o educativo
-3. Escribir un post específico sobre ESE punto
-4. Ignorar el resto — no tratar de meter múltiples ideas
-
-**Regla central:** 1 post = 1 idea. Máximo 2-3 ideas muy relacionadas que refuerzan la misma idea central. Nunca un post que intente cubrir todo lo que estaba en el newsletter.
+Skill para escribir posts de LinkedIn que replican exactamente la voz, tono, estructura y estilo de LP.
 
 ---
 
@@ -292,31 +297,64 @@ Leer los 3 archivos COMPLETOS antes de continuar. Este es el paso más important
 
 ---
 
-## PASO 1 — Identificar el mejor punto del newsletter
+## PASO 1 — Recibir input
 
-Leer todo el contenido que pegó el usuario y escoger **UN SOLO PUNTO** que cumpla al menos uno de estos criterios:
+El usuario da el tema y todo lo que tiene escrito sobre ese tema: notas, ideas, observaciones, lo que sea.
 
-- **Sorpresa:** algo contraintuitivo, inesperado, que rompe una creencia común del ICP
-- **Aprendizaje puntual:** una lección concreta, específica, que el lector puede aplicar o entender hoy
-- **Dato que reencuadra:** un número, caso o hecho que hace que el lector vea algo diferente
-- **Tensión:** una contradicción, dilema o verdad incómoda que el ICP vive pero no nombra
-
-**Criterios para escoger el punto:**
-
-- Debe resonar con el AVATAR — founders/CEOs de empresas de servicios B2B en LATAM con ambición de crecer con AI y miedo a quedarse afuera
-- Debe ser lo suficientemente específico para que enseñe o eduque de forma concreta, no una generalidad vaga
-- Debe poder sostener un post entero sin necesidad de agregarle más ideas
-- Si hay 3 puntos buenos, escoger el que MÁS sorprenda o MÁS enseñe — no el más seguro
-
-**Regla:** No anunciar al usuario cuál punto escogiste ni explicar por qué. Escoger internamente y pasar directo al PASO 2. El output final (post + hooks) habla por sí solo.
+**Regla:** No hacer preguntas adicionales. Con lo que el usuario da es suficiente para arrancar. Ir directo al PASO 3.
 
 ---
 
-## PASO 2 — Escribir el post + 5 hooks automáticamente
+## PASO 2 — (Reservado para lectura silenciosa de archivos — ya cubierto en PASO 0)
 
-El output completo del skill es: **el post redactado + los 5 hooks alternativos**. Todo en una sola respuesta, sin pasos intermedios, sin preguntas.
+---
 
-### Formato y estilo del post:
+## PASO 3 — Presentar 10 ángulos
+
+Basándose en el tema, las notas del usuario y los 3 context files, generar exactamente **10 ángulos**.
+
+### Cómo generar los ángulos:
+
+- Analizar profundamente el tema y encontrar los 10 ángulos más poderosos, relevantes e interesantes para ESE tema específico
+- NO seguir una lista fija de tipos de ángulos. Pensar qué ángulos realmente tienen potencial para este tema en particular
+- Los ángulos deben ser de negocios, con insights reales y profundos
+- Relevantes para founders y líderes latinoamericanos que están considerando implementar IA en sus empresas
+- Cada ángulo debe sentirse distinto al anterior — cero redundancia
+- Cada uno debe explorar una dimensión diferente del tema
+
+### Formato de cada ángulo:
+
+```
+[Número]. [Nombre del ángulo]
+
+[Explicación detallada del insight, la tensión o la idea que explota — mínimo 3 líneas. Debe explicar por qué este ángulo es poderoso y qué hace que funcione para la audiencia del ICP]
+
+Hook: "[El hook exacto con el que abriría el post]"
+```
+
+### Reglas de los ángulos:
+
+- Exactamente 10 ángulos, ni más ni menos
+- La explicación de cada ángulo debe tener mínimo 3 líneas sustanciales
+- El hook debe ser una frase concreta, no un concepto — es la primera línea real del post
+- Los hooks deben seguir los patrones de apertura de TONO_VOZ.md: afirmación provocadora, emoción cruda, o resultado concreto
+- Nunca abrir con contexto ni introducciones suaves
+
+---
+
+## PASO 4 — El usuario elige
+
+El usuario dice el número del ángulo que quiere. Puede elegir uno o combinar dos.
+
+**Regla:** No proponer estructuras ni hacer más preguntas. Pasar directo a escribir el post.
+
+---
+
+## PASO 5 — Escribir el post
+
+Escribir el post completo siguiendo estas reglas:
+
+### Formato y estilo:
 
 - **Mimic exacto** del tono, ritmo, largo de párrafos, saltos de línea y forma de cerrar de los posts en `Post_LinkedIn_Referencia.md`
 - No inventar estructura nueva — replicar el patrón de los ejemplos con el tema nuevo
@@ -332,6 +370,60 @@ El output completo del skill es: **el post redactado + los 5 hooks alternativos*
 - Signos de exclamación y pregunta múltiples cuando la emoción lo pide: "!!!", "???"
 - Hablar desde la experiencia, no desde la teoría
 - Usar "uno" como pronombre impersonal
+
+### Ejemplos de contraste — qué SÍ y qué NO
+
+**Caso 1: Posts de noticias/análisis — tono columnista vs amigo**
+
+NO (tono columnista, sentencia desde arriba):
+"Meta siempre fue la empresa del open source. Esta semana hicieron lo opuesto. Lanzaron Muse Spark — propietario, sin compromiso de open-source."
+
+SÍ (tono amigo contando lo que vio):
+"Meta por fin sacó su AI después de invertir $14.3B en el Dream Team. Se acuerdan el año pasado que había reclutado a Alexander Wang? Bueno hoy podemos empezar a ver qué están sacando."
+
+**Caso 2: Concepto abstracto vs analogía cotidiana**
+
+NO (concepto abstracto sin aterrizar):
+"La inteligencia — no solo la infraestructura — es el nuevo moat."
+
+SÍ (aterrizado en analogía cotidiana):
+"Si OpenAI estaba regalando meses gratis ahora, esto me recuerda a Rappi vs Ubereats en la guerra de los descuentos jajaja"
+
+**Caso 3: Cierre filosófico vs cierre cercano**
+
+NO (cierre filosófico distante):
+"Si Meta termina siendo tan bueno como Claude o GPT-5 y lo mete directo en WhatsApp... cómo cambia tu estrategia de AI???"
+
+SÍ (cierre cercano y especulativo):
+"Meta fijo lo mete directo en WhatsApp... cómo cambiaría eso??"
+
+**Caso 4: Tutoriales — imperativo "tú" vs primera persona**
+
+NO (dando órdenes al lector):
+"Crea dos databases. Ve a Notion AI, click en Create custom agent. Conectas Gmail, confirmas el horario y lo guardas. Lo corres una vez para probar."
+
+SÍ (narrando lo que uno hace):
+"Creo dos databases. Entro a Notion AI, click en Create custom agent. Ahí conecto Gmail, confirmo el horario y lo guardo. Lo corro una vez para probar y voy ajustando el output."
+
+**Caso 5: Frases sintéticas partidas vs unidas con coma/y**
+
+NO (estilo Twitter de copywriter, partido en pedacitos):
+"Sin plataforma fija. Sin costos de entrada."
+"Un agente para leads. Uno para reportes. Uno para revisar facturas."
+"Todo en el mismo lugar. Todo trazable."
+
+SÍ (como hablaría un colombiano):
+"Sin plataforma fija, sin costos de entrada"
+"Un agente para leads, uno para reportes de campañas, otro para revisar facturas"
+"Todo en el mismo lugar y trazable"
+
+**Caso 6: Cierre tipo ensayo vs cierre con urgencia coloquial**
+
+NO (sentencia partida en frases dramáticas):
+"La pregunta es cuándo. Y si van a estar del lado que se preparó o del lado que reaccionó."
+
+SÍ (urgencia natural):
+"La pregunta para cualquier empresa de servicios es cuándo y cómo hago para protegerme ya ya!!"
 
 ### Palabras PROHIBIDAS — nunca usar estas palabras o expresiones:
 
@@ -350,41 +442,36 @@ El output completo del skill es: **el post redactado + los 5 hooks alternativos*
 - "paradigma"
 - "sinergia"
 - "apalancarse"
+- "hipérbole" (palabra demasiado culta — LP nunca la usaría)
+- "filosofías" (palabra ensayística — usar "formas de pensar" o reformular)
 - Cualquier lenguaje corporativo, académico o formal
 
 ### Estructura del post:
 
 1. **Gancho** — Afirmación provocadora, emoción cruda, o resultado concreto. Las primeras 2-3 líneas deben generar curiosidad para que hagan click en "ver más"
-2. **Desarrollo del punto** — Explicar el punto específico con profundidad. Si es práctico, usar listas numeradas. Si es conceptual, usar ejemplos concretos del newsletter
-3. **Por qué le importa al lector** — Conectar el punto con la realidad del ICP: su operación, su negocio, su decisión de hoy
+2. **Historia o contexto personal** — Una anécdota, experiencia o situación concreta que humaniza el tema
+3. **Desarrollo** — Framework, pasos, lección o reflexión. Si es práctico, usar listas numeradas
 4. **Cierre** — Pregunta directa al lector O oferta de ayuda. Nunca cerrar con resumen seco
 
-### Regla de contenido — LA MÁS IMPORTANTE:
+### Contenido:
 
-- **Una sola idea por post.** Máximo 2-3 ideas si son sub-puntos que refuerzan el mismo insight central
-- **Enseñar algo específico.** El lector debe terminar el post con algo concreto que antes no sabía o que ve diferente
-- **No cubrir todo el newsletter.** El resto del contenido que no entra en el post se descarta sin culpa
-- **Usar solo datos del newsletter.** No inventar cifras, casos ni ejemplos que no estén en el input. Si el newsletter tiene números, usarlos. Si tiene casos, integrarlos
+- Basarse en las notas e ideas que dio el usuario — no inventar datos ni historias que el usuario no mencionó
+- Si el usuario dio datos específicos, usarlos
+- Si el usuario contó una experiencia, integrarla como la historia personal del post
 - El CTA debe ser natural, no forzado, alineado a lo que hace LP (implementación de AI para empresas de servicios B2B)
-
-### Los 5 hooks alternativos:
-
-Después del post, presentar 5 hooks alternativos para ese mismo post.
-
-- Cada hook debe ser de un tipo distinto (provocador, emocional, resultado concreto, pregunta, contraintuitivo)
-- Los hooks deben seguir los patrones de apertura de TONO_VOZ.md: afirmación provocadora, emoción cruda, o resultado concreto
-- Nunca abrir con contexto ni introducciones suaves
-- Formato simple, numerados del 1 al 5
-
-### Formato del output final:
-
-```
-[POST COMPLETO aquí, texto plano formato LinkedIn]
 
 ---
 
-5 hooks alternativos:
+## PASO 6 — Dar 5 opciones de hook
 
+Después del post, presentar 5 hooks alternativos para ese mismo post.
+
+### Reglas de los hooks alternativos:
+
+- Cada hook debe ser de un tipo distinto (provocador, emocional, resultado concreto, pregunta, contraintuitivo)
+- Formato simple:
+
+```
 1. [Hook]
 2. [Hook]
 3. [Hook]
@@ -394,26 +481,22 @@ Después del post, presentar 5 hooks alternativos para ese mismo post.
 
 ### Cuando el usuario elige un hook:
 
-Si el usuario dice "usa el hook 3" (o el número que sea), reescribir el post con ese hook sin cambiar nada más del contenido.
+El usuario dice "usa el hook 3" (o el número que sea). Reescribir el post con ese hook sin cambiar nada más del contenido.
 
 ---
 
 ## REGLAS FIJAS DEL SKILL
 
-1. **Input = newsletter (o bloque grande de info).** El usuario pega contenido amplio, el skill escoge UN punto y escribe sobre ese
-2. **1 post = 1 idea.** Máximo 2-3 ideas muy relacionadas. Nunca un post que trate de cubrir todo el newsletter
-3. **Escoger sorpresa o aprendizaje puntual.** El punto escogido debe sorprender o enseñar algo específico — no ser un resumen general
-4. **Output automático en una sola respuesta.** Post + 5 hooks, sin pasos intermedios, sin preguntas al usuario, sin proponer ángulos
-5. **Nunca saltarse la lectura de los 3 context files** — es obligatorio en cada ejecución
-6. **Nunca anunciar cuál punto escogiste** — ir directo al post, el output habla por sí solo
-7. **No preguntar nada al usuario** — con el newsletter que pegó hay suficiente para arrancar
-8. **No explicar el proceso** — no decir "voy a leer los archivos" ni "escogí este punto porque...". Simplemente entregar post + hooks
-9. **El output siempre es texto plano** — formato LinkedIn, sin markdown, sin asteriscos, sin negritas
-10. **Correcciones del usuario son temporales** — si el usuario dice "no hagas X" durante el proceso, aplicar esa corrección en ese momento pero no guardarla como regla permanente para futuras ejecuciones
-11. **No inventar datos ni historias** — usar solo lo que está en el newsletter del usuario. Si el newsletter no tiene un caso, no fabricar uno
-12. **Mantener coherencia con el AVATAR** — el post debe resonar con founders de empresas de servicios B2B de 5-80 personas en LATAM que quieren crecer con AI sin doblar nómina y tienen miedo de quedarse afuera
-13. **El post debe poder publicarse tal cual** — sin edición adicional, listo para copiar y pegar en LinkedIn
-14. **Nunca usar Apify ni scrapers** — el usuario siempre pega el contenido directamente
+1. **Nunca proponer estructuras al usuario** — siempre ir directo a escribir basándose en los ejemplos
+2. **Nunca saltarse la lectura de los 3 context files** — es obligatorio en cada ejecución
+3. **Nunca usar Apify ni scrapers** — el usuario siempre da el tema y las notas directamente
+4. **El output siempre es texto plano** — formato LinkedIn, sin markdown, sin asteriscos, sin negritas
+5. **Correcciones del usuario son temporales** — si el usuario dice "no hagas X" durante el proceso, aplicar esa corrección en ese momento pero no guardarla como regla permanente para futuras ejecuciones
+6. **No preguntar nada al usuario en el PASO 1** — con el tema y las notas que da, arrancar directo
+7. **No explicar el proceso** — no decir "voy a leer los archivos" ni "ahora voy a presentar los ángulos". Simplemente hacerlo
+8. **No inventar historias** — usar solo lo que el usuario proporciona como material. Si necesita una anécdota, debe venir de las notas del usuario, no de la imaginación
+9. **Mantener coherencia con el ICP** — el post debe resonar con founders de empresas de servicios B2B de 5-80 personas en LATAM que quieren implementar AI
+10. **El post debe poder publicarse tal cual** — sin edición adicional, listo para copiar y pegar en LinkedIn
 
 
 ---
@@ -480,6 +563,19 @@ Casi siempre abre con una de estas tres fórmulas:
 
 Nunca abre con contexto largo ni introducciones suaves.
 
+### Aperturas conversacionales orales (CRÍTICO para posts de noticias/análisis)
+
+Cuando el post comenta una noticia, lanzamiento o tendencia, NUNCA abrir con tesis-argumentación tipo columnista ("Meta siempre fue la empresa del open source. Esta semana hicieron lo opuesto."). Eso suena a Substack, no a LP.
+
+En su lugar, abrir con una de estas fórmulas conversacionales:
+
+1. **"Se acuerdan que..."** — invoca memoria compartida con el lector ("Se acuerdan el año pasado que había reclutado a Alexander Wang...")
+2. **"Estaba leyendo..."** — posiciona al autor como alguien que está descubriendo, no sentenciando ("Estaba leyendo los benchmarks y...")
+3. **"Me pareció bacano / loco / increíble que..."** — reacción emocional cruda y personal
+4. **"Por fin pasó X"** — celebración o constatación coloquial ("Meta por fin sacó su AI...")
+
+La regla de fondo: el autor NO sentencia desde arriba. Cuenta lo que vio como si te lo estuviera mostrando en el celular.
+
 ### Cierres
 
 Cierra con pregunta directa al lector en la gran mayoría de posts ("Qué es lo que te está deteniendo?", "Los quiero escuchar a qué le van a decir que no esta semana?", "Cuéntenme cómo harán que su negocio sea más valioso?"). A veces combina la pregunta con una oferta de ayuda ("Si quieren que les ayude estructurando algún skill escríbanme"). Los cierres nunca son resúmenes secos — siempre buscan acción o emoción.
@@ -495,6 +591,32 @@ Progresión lineal pero con desvíos personales. Va del punto A al B pasando por
 ### Longitud y Ritmo
 
 Mezcla constante. Oraciones cortas para impacto emocional ("Yo tampoco…", "Consistencia.", "El camino sorprende.") intercaladas con oraciones más largas y explicativas. El ritmo imita el habla: aceleración en las partes prácticas, desaceleración en las reflexivas. Usa mucho el punto y aparte para crear pausas dramáticas — una sola idea por línea, como si dictara por voz.
+
+### CUÁNDO partir frases cortas y cuándo NO (CRÍTICO)
+
+El estilo "stacked" (frases cortas en líneas separadas) está PERMITIDO solo cuando cada frase carga peso emocional o reflexivo propio:
+
+PERMITIDO:
+- "Yo tampoco…"
+- "Consistencia."
+- "El camino sorprende."
+- "Anthropic no para!!!"
+
+PROHIBIDO partir así frases sintéticas tipo Twitter de copywriter. Si en habla real las unirías con coma, "y" o "o" — escríbelas unidas:
+
+NO (estilo Twitter de copywriter):
+- "Sin plataforma fija. Sin costos de entrada."
+- "Un agente para leads. Uno para reportes. Uno para revisar facturas."
+- "Todo en el mismo lugar. Todo trazable."
+- "La pregunta es cuándo. Y si van a estar del lado que se preparó o del lado que reaccionó."
+
+SÍ (como hablaría un colombiano):
+- "Sin plataforma fija, sin costos de entrada"
+- "Un agente para leads, uno para reportes de campañas, otro para revisar facturas"
+- "Todo en el mismo lugar y trazable"
+- "La pregunta es cuándo y cómo hago para protegerme ya ya!!"
+
+Test rápido: leer la frase en voz alta. Si suena a slogan publicitario o a tweet de growth-hacker, está mal. Si suena a alguien hablando, está bien.
 
 ### Sintaxis y Construcción
 
@@ -599,18 +721,21 @@ No usa encabezados formales. El equivalente son oraciones en negrita implícitas
 
 ## 8. Reglas de Estilo / Checklist
 
-### Reglas de Voz (10)
+### Reglas de Voz (13)
 
 1. Escribir como si le estuvieras contando algo a un amigo por nota de voz — cero formalidad, máxima naturalidad.
 2. Usar colombianismos y expresiones coloquiales sin disculparse ("chimba", "de una", "all-in", "qué carajos").
 3. Mezclar anglicismos de tech/negocio con español informal — nunca traducir artificialmente.
 4. Hablar desde la experiencia propia, no desde la teoría. Siempre "yo hice esto" antes de "tú deberías hacer esto."
-5. Ser vulnerable con los fracasos — contar la empresa que cerró, el miedo, la pereza, la dificultad.
-6. Mantener energía optimista y ambiciosa incluso cuando el tema es duro.
-7. Usar "uno" como pronombre impersonal para incluir al lector sin señalarlo.
-8. Alargar vocales para énfasis emocional ("taaaanta", "muuuuy", "lejísimos").
-9. Poner signos de exclamación y pregunta múltiples cuando la emoción lo pide ("!!!", "???").
-10. Cerrar siempre con una pregunta directa que invite al lector a comentar.
+5. En posts de noticias o análisis de la industria, INSERTAR reacciones personales en primera persona ("me pareció bacano que...", "esto me recuerda a...", "estaba leyendo y..."). Nunca quedarse solo en el análisis frío — siempre meter el "yo" reaccionando.
+6. Aterrizar conceptos abstractos en analogías cotidianas latinoamericanas. "La guerra de precios" se vuelve "Rappi vs Ubereats". "El nuevo moat" se vuelve algo que se ve en la calle. Si la analogía suena a TED talk gringo, está mal.
+7. Ser vulnerable con los fracasos — contar la empresa que cerró, el miedo, la pereza, la dificultad.
+8. Mantener energía optimista y ambiciosa incluso cuando el tema es duro.
+9. Usar "uno" como pronombre impersonal para incluir al lector sin señalarlo.
+10. Alargar vocales para énfasis emocional ("taaaanta", "muuuuy", "lejísimos").
+11. Poner signos de exclamación y pregunta múltiples cuando la emoción lo pide ("!!!", "???").
+12. Cerrar siempre con una pregunta directa que invite al lector a comentar.
+13. En posts prácticos/tutoriales, narrar los pasos en PRIMERA PERSONA contando lo que uno hace ("creo dos databases", "entro a Notion AI", "ahí conecto Gmail"), NO en imperativo "tú" ("crea dos databases", "ve a Notion AI", "conectas Gmail"). El autor muestra lo que él hizo, no le da órdenes al lector.
 
 ### Reglas de Oración y Palabras (10)
 
@@ -638,13 +763,14 @@ No usa encabezados formales. El equivalente son oraciones en negrita implícitas
 9. Mencionar personas reales con nombre y etiqueta para humanizar y generar interacción.
 10. Incluir al menos un momento de vulnerabilidad o autocrítica en los posts reflexivos.
 
-### Reglas de "NO HACER" (5)
+### Reglas de "NO HACER" (6)
 
 1. **NO** usar lenguaje académico, formal ni qualifiers como "quizás", "podría argumentarse", "cabe resaltar."
-2. **NO** escribir párrafos largos ni bloques densos de texto — si parece un artículo de revista, está mal.
-3. **NO** hablar desde una posición de experto distante — nunca "como profesional del sector les recomiendo."
-4. **NO** abrir con contexto, definiciones ni introducciones largas — ir directo al gancho.
-5. **NO** cerrar sin invitar al lector a participar — cada post debe sentirse como el inicio de una conversación, no como un monólogo.
+2. **NO** escribir en tono columnista/Substack/Twitter de VC. Frases tipo "X siempre fue Y. Esta semana hizo lo opuesto." o "la inteligencia es el nuevo moat" están prohibidas. El autor NO sentencia desde arriba — cuenta lo que vio como amigo.
+3. **NO** escribir párrafos largos ni bloques densos de texto — si parece un artículo de revista, está mal.
+4. **NO** hablar desde una posición de experto distante — nunca "como profesional del sector les recomiendo."
+5. **NO** abrir con contexto, definiciones ni introducciones largas — ir directo al gancho.
+6. **NO** cerrar sin invitar al lector a participar — cada post debe sentirse como el inicio de una conversación, no como un monólogo.
 
 ---
 

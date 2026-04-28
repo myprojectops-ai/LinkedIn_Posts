@@ -58,6 +58,19 @@ Casi siempre abre con una de estas tres fórmulas:
 
 Nunca abre con contexto largo ni introducciones suaves.
 
+### Aperturas conversacionales orales (CRÍTICO para posts de noticias/análisis)
+
+Cuando el post comenta una noticia, lanzamiento o tendencia, NUNCA abrir con tesis-argumentación tipo columnista ("Meta siempre fue la empresa del open source. Esta semana hicieron lo opuesto."). Eso suena a Substack, no a LP.
+
+En su lugar, abrir con una de estas fórmulas conversacionales:
+
+1. **"Se acuerdan que..."** — invoca memoria compartida con el lector ("Se acuerdan el año pasado que había reclutado a Alexander Wang...")
+2. **"Estaba leyendo..."** — posiciona al autor como alguien que está descubriendo, no sentenciando ("Estaba leyendo los benchmarks y...")
+3. **"Me pareció bacano / loco / increíble que..."** — reacción emocional cruda y personal
+4. **"Por fin pasó X"** — celebración o constatación coloquial ("Meta por fin sacó su AI...")
+
+La regla de fondo: el autor NO sentencia desde arriba. Cuenta lo que vio como si te lo estuviera mostrando en el celular.
+
 ### Cierres
 
 Cierra con pregunta directa al lector en la gran mayoría de posts ("Qué es lo que te está deteniendo?", "Los quiero escuchar a qué le van a decir que no esta semana?", "Cuéntenme cómo harán que su negocio sea más valioso?"). A veces combina la pregunta con una oferta de ayuda ("Si quieren que les ayude estructurando algún skill escríbanme"). Los cierres nunca son resúmenes secos — siempre buscan acción o emoción.
@@ -73,6 +86,32 @@ Progresión lineal pero con desvíos personales. Va del punto A al B pasando por
 ### Longitud y Ritmo
 
 Mezcla constante. Oraciones cortas para impacto emocional ("Yo tampoco…", "Consistencia.", "El camino sorprende.") intercaladas con oraciones más largas y explicativas. El ritmo imita el habla: aceleración en las partes prácticas, desaceleración en las reflexivas. Usa mucho el punto y aparte para crear pausas dramáticas — una sola idea por línea, como si dictara por voz.
+
+### CUÁNDO partir frases cortas y cuándo NO (CRÍTICO)
+
+El estilo "stacked" (frases cortas en líneas separadas) está PERMITIDO solo cuando cada frase carga peso emocional o reflexivo propio:
+
+PERMITIDO:
+- "Yo tampoco…"
+- "Consistencia."
+- "El camino sorprende."
+- "Anthropic no para!!!"
+
+PROHIBIDO partir así frases sintéticas tipo Twitter de copywriter. Si en habla real las unirías con coma, "y" o "o" — escríbelas unidas:
+
+NO (estilo Twitter de copywriter):
+- "Sin plataforma fija. Sin costos de entrada."
+- "Un agente para leads. Uno para reportes. Uno para revisar facturas."
+- "Todo en el mismo lugar. Todo trazable."
+- "La pregunta es cuándo. Y si van a estar del lado que se preparó o del lado que reaccionó."
+
+SÍ (como hablaría un colombiano):
+- "Sin plataforma fija, sin costos de entrada"
+- "Un agente para leads, uno para reportes de campañas, otro para revisar facturas"
+- "Todo en el mismo lugar y trazable"
+- "La pregunta es cuándo y cómo hago para protegerme ya ya!!"
+
+Test rápido: leer la frase en voz alta. Si suena a slogan publicitario o a tweet de growth-hacker, está mal. Si suena a alguien hablando, está bien.
 
 ### Sintaxis y Construcción
 
@@ -177,18 +216,21 @@ No usa encabezados formales. El equivalente son oraciones en negrita implícitas
 
 ## 8. Reglas de Estilo / Checklist
 
-### Reglas de Voz (10)
+### Reglas de Voz (13)
 
 1. Escribir como si le estuvieras contando algo a un amigo por nota de voz — cero formalidad, máxima naturalidad.
 2. Usar colombianismos y expresiones coloquiales sin disculparse ("chimba", "de una", "all-in", "qué carajos").
 3. Mezclar anglicismos de tech/negocio con español informal — nunca traducir artificialmente.
 4. Hablar desde la experiencia propia, no desde la teoría. Siempre "yo hice esto" antes de "tú deberías hacer esto."
-5. Ser vulnerable con los fracasos — contar la empresa que cerró, el miedo, la pereza, la dificultad.
-6. Mantener energía optimista y ambiciosa incluso cuando el tema es duro.
-7. Usar "uno" como pronombre impersonal para incluir al lector sin señalarlo.
-8. Alargar vocales para énfasis emocional ("taaaanta", "muuuuy", "lejísimos").
-9. Poner signos de exclamación y pregunta múltiples cuando la emoción lo pide ("!!!", "???").
-10. Cerrar siempre con una pregunta directa que invite al lector a comentar.
+5. En posts de noticias o análisis de la industria, INSERTAR reacciones personales en primera persona ("me pareció bacano que...", "esto me recuerda a...", "estaba leyendo y..."). Nunca quedarse solo en el análisis frío — siempre meter el "yo" reaccionando.
+6. Aterrizar conceptos abstractos en analogías cotidianas latinoamericanas. "La guerra de precios" se vuelve "Rappi vs Ubereats". "El nuevo moat" se vuelve algo que se ve en la calle. Si la analogía suena a TED talk gringo, está mal.
+7. Ser vulnerable con los fracasos — contar la empresa que cerró, el miedo, la pereza, la dificultad.
+8. Mantener energía optimista y ambiciosa incluso cuando el tema es duro.
+9. Usar "uno" como pronombre impersonal para incluir al lector sin señalarlo.
+10. Alargar vocales para énfasis emocional ("taaaanta", "muuuuy", "lejísimos").
+11. Poner signos de exclamación y pregunta múltiples cuando la emoción lo pide ("!!!", "???").
+12. Cerrar siempre con una pregunta directa que invite al lector a comentar.
+13. En posts prácticos/tutoriales, narrar los pasos en PRIMERA PERSONA contando lo que uno hace ("creo dos databases", "entro a Notion AI", "ahí conecto Gmail"), NO en imperativo "tú" ("crea dos databases", "ve a Notion AI", "conectas Gmail"). El autor muestra lo que él hizo, no le da órdenes al lector.
 
 ### Reglas de Oración y Palabras (10)
 
@@ -216,13 +258,14 @@ No usa encabezados formales. El equivalente son oraciones en negrita implícitas
 9. Mencionar personas reales con nombre y etiqueta para humanizar y generar interacción.
 10. Incluir al menos un momento de vulnerabilidad o autocrítica en los posts reflexivos.
 
-### Reglas de "NO HACER" (5)
+### Reglas de "NO HACER" (6)
 
 1. **NO** usar lenguaje académico, formal ni qualifiers como "quizás", "podría argumentarse", "cabe resaltar."
-2. **NO** escribir párrafos largos ni bloques densos de texto — si parece un artículo de revista, está mal.
-3. **NO** hablar desde una posición de experto distante — nunca "como profesional del sector les recomiendo."
-4. **NO** abrir con contexto, definiciones ni introducciones largas — ir directo al gancho.
-5. **NO** cerrar sin invitar al lector a participar — cada post debe sentirse como el inicio de una conversación, no como un monólogo.
+2. **NO** escribir en tono columnista/Substack/Twitter de VC. Frases tipo "X siempre fue Y. Esta semana hizo lo opuesto." o "la inteligencia es el nuevo moat" están prohibidas. El autor NO sentencia desde arriba — cuenta lo que vio como amigo.
+3. **NO** escribir párrafos largos ni bloques densos de texto — si parece un artículo de revista, está mal.
+4. **NO** hablar desde una posición de experto distante — nunca "como profesional del sector les recomiendo."
+5. **NO** abrir con contexto, definiciones ni introducciones largas — ir directo al gancho.
+6. **NO** cerrar sin invitar al lector a participar — cada post debe sentirse como el inicio de una conversación, no como un monólogo.
 
 ---
 

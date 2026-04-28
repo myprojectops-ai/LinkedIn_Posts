@@ -54,25 +54,41 @@ Elige internamente, sin anunciar:
 
 Puede ser la MISMA Idea si un solo newsletter cubre ambos fuertes (p.ej. uno que anuncia un lanzamiento y además trae un how-to).
 
-### 3. Ejecutar el skill `lp-linkedin-writer` — POST #1 (news)
+### Adaptación del skill v2 al modo autónomo
 
-Activa el skill pasándole el contenido completo de `Notas` de la Idea elegida como input. Al final del input añade:
+El skill `lp-linkedin-writer` está diseñado para flujo INTERACTIVO (PASO 3 presenta 10 ángulos → PASO 4 el usuario elige). Aquí corres SOLO, sin humano que escoja, así que adapta el flujo internamente:
 
-```
----
-Ángulo requerido para este post: NEWS / movimiento de mercado. Escoge el punto del newsletter con mayor sorpresa o reencuadre estratégico — algo que un founder de servicios B2B en LATAM necesita ver hoy.
-```
+- **PASO 0 (lectura silenciosa)** — consulta internamente TONO_VOZ.md, AVATAR.md, Post_LinkedIn_Referencia.md y los Inspo de `posts-pasados/` antes de escribir. OBLIGATORIO.
+- **PASO 3 (identificar ángulos)** — NO presentes 10 ángulos. Internamente piensa 3-5 ángulos posibles del newsletter y escoge UNO que cumpla: (a) encaja con el tipo requerido (NEWS o EDUCATIVO), (b) resuena con el AVATAR, (c) tiene datos concretos del newsletter para sostener el post.
+- **PASOS 4-5 (escribir el post)** — directo, sin pedir confirmación.
+- **PASO 6 (5 hooks)** — genera 5 hooks alternativos al final.
 
-El skill devolverá: **post completo** + **5 hooks alternativos**. Captúralo tal cual.
+### Reglas críticas de voz (refuerzo del skill v2)
 
-### 4. Ejecutar el skill `lp-linkedin-writer` — POST #2 (educativo)
+Estas son las reglas que el skill v2 enfatizó porque los posts venían saliendo con tono incorrecto. Apégate especialmente a estas:
 
-Repite con la otra Idea (o la misma si es el caso). Input = `Notas` de esa Idea + al final:
+1. **Para posts de noticias/análisis**: NO abrir con tono columnista/Substack ("X siempre fue Y. Esta semana hizo lo opuesto."). USA aperturas conversacionales orales: "Se acuerdan que...", "Estaba leyendo...", "Me pareció bacano/loco/increíble que...", "Por fin pasó X". El autor cuenta lo que vio, NO sentencia desde arriba.
+2. **Inserta reacciones personales en primera persona** en posts de noticias ("me pareció bacano que...", "esto me recuerda a..."). Nunca quedarse solo en análisis frío.
+3. **Aterriza conceptos abstractos en analogías LATAM cotidianas**, no TED talk gringo. "La guerra de descuentos" → "Rappi vs Ubereats", no "el nuevo moat".
+4. **Para tutoriales: PRIMERA PERSONA** ("creo dos databases", "entro a Notion AI", "ahí conecto Gmail"), NO imperativo "tú" ("crea", "ve", "conectas"). El autor muestra lo que él hizo.
+5. **No partir frases sintéticas tipo Twitter de copywriter**. "Sin plataforma fija. Sin costos de entrada." está mal — escríbelo como hablaría un colombiano: "Sin plataforma fija, sin costos de entrada". Test: si suena a slogan publicitario, está mal.
+6. **Cierres cercanos, no filosóficos**. "La pregunta es cuándo y cómo hago para protegerme ya ya!!" sí. "La pregunta es cuándo. Y si van a estar del lado que se preparó o del lado que reaccionó." no.
 
-```
----
-Ángulo requerido para este post: EDUCATIVO / accionable. Escoge el punto más práctico que un founder pueda aplicar esta semana en su negocio. Tutorial, workflow, prompt, decisión concreta — no hype abstracto.
-```
+### 3. Generar POST #1 (ángulo NEWS)
+
+Aplica el flujo del skill (con la adaptación autónoma de arriba) sobre el contenido completo de `Notas` de la Idea fuente NEWS.
+
+Ángulo requerido: **NEWS / movimiento de mercado**. Escoge el punto del newsletter con mayor sorpresa o reencuadre estratégico — algo que un founder de servicios B2B en LATAM necesita ver hoy. Aperturas conversacionales orales obligatorias (ver regla 1 de arriba).
+
+Output: post completo + 5 hooks alternativos.
+
+### 4. Generar POST #2 (ángulo EDUCATIVO)
+
+Repite con la otra Idea (o la misma).
+
+Ángulo requerido: **EDUCATIVO / accionable**. Escoge el punto más práctico que un founder pueda aplicar esta semana — tutorial, workflow, prompt, decisión concreta. Si el post es tutorial: PRIMERA PERSONA, no imperativo (ver regla 4 de arriba).
+
+Output: post completo + 5 hooks alternativos.
 
 ### 5. Crear los 2 drafts en la DB "LinkedIn posts"
 
@@ -136,9 +152,11 @@ Fuentes marcadas como Usada: <título(s) Idea>
 
 ## Reglas fijas
 
-1. El skill `lp-linkedin-writer` es obligatorio. No escribir posts sin pasarlos por el skill (cargará los 3 archivos de referencia: TONO_VOZ, AVATAR, Post_LinkedIn_Referencia).
-2. Estado de los drafts nuevos siempre `En draft` — nunca publicar directo.
-3. Usa solo datos que estén en `Notas`. No inventes cifras, casos ni ejemplos.
-4. Si una fuente no tiene suficiente material para uno de los ángulos, úsala igual para el otro y deja un solo draft (reporta en el resumen final).
-5. Nunca dupliques una Idea ya usada — el filtro `Usada != __YES__` es lo que previene repeticiones.
-6. No uses WebFetch ni scrapers — todo el contenido viene del campo `Notas` en Notion.
+1. El skill `lp-linkedin-writer` es obligatorio. No escribir posts sin consultar internamente TONO_VOZ.md, AVATAR.md, Post_LinkedIn_Referencia.md + los Inspo de posts-pasados.
+2. Aplica las **reglas críticas de voz** del bloque de arriba — son las que el boss enfatizó después de revisar drafts pasados que sonaban a columnista/Substack.
+3. Estado de los drafts nuevos siempre `En draft` — nunca publicar directo.
+4. Usa solo datos que estén en `Notas`. No inventes cifras, casos ni ejemplos.
+5. Si una fuente no tiene suficiente material para uno de los ángulos, úsala igual para el otro y deja un solo draft (reporta en el resumen final).
+6. Nunca dupliques una Idea ya usada — el filtro `Usada != __YES__` es lo que previene repeticiones.
+7. No uses WebFetch ni scrapers — todo el contenido viene del campo `Notas` en Notion.
+8. Palabras prohibidas (parcial, ver TONO_VOZ.md completo): "sin duda", "fundamental", "clave" (adj), "en conclusión", "hoy en día", "paradigma", "sinergia", "apalancarse", "hipérbole", "filosofías", lenguaje corporativo o académico.
